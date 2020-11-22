@@ -12,3 +12,8 @@ variable "my-tags" {
   
 }
 
+variable "env"{
+
+    default = "prod"
+}
+

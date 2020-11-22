@@ -3,6 +3,7 @@ resource "aws_instance" "hello-world" {
     instance_type = "t2.micro"
     vpc_security_group_ids = ["${aws_security_group.webserver-sg.id}"]
     key_name = "terraform"
+    count = "${var.env == "dev" ? 2 : 1}"
  tags = {
     Name = "hello-world"
  }
@@ -17,3 +18,4 @@ user_data = <<-EOF
  sudo service docker start
  EOF
 }
+
